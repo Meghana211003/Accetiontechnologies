@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Startup Company focused on innovative solutions." />
+<title>Startup Company - Innovating for a Better Tomorrow</title>
+
+<style>
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #fefefe;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  background: #005f73;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+header .logo h1 {
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.8rem;
+  letter-spacing: 1.2px;
+  user-select: none;
+  perspective: 600px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+header .logo h1:hover {
+  transform: rotateY(15deg) rotateX(10deg) translateZ(10px);
+  color: #94d2bd;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #94d2bd;
+  color: #003d3b;
+  transform: translateZ(6px) scale(1.05);
+  outline: none;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 420px;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  perspective: 1200px;
+  background: linear-gradient(135deg, #0a9396 0%, #005f73 100%);
+  user-select: none;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5) contrast(1.2);
+  z-index: 0;
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+.hero:hover::before {
+  transform: scale(1.1) rotateZ(1deg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  animation: fadeInMoveUp 1s ease forwards;
+  transform-style: preserve-3d;
+}
+
+.hero-content h2 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 0.3em;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  transform: translateZ(40px) rotateX(-7deg);
+  transition: transform 0.5s ease;
+  cursor: default;
+}
+.hero-content h2:hover {
+  transform: translateZ(80px) rotateX(0deg) scale(1.05);
+  text-shadow: 3px 3px 12px rgba(255, 255, 255, 0.8);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 1.2em;
+  font-weight: 500;
+  text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+}
+
+.cta-button {
+  background: #94d2bd;
+  color: #003d3b;
+  padding: 12px 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(148, 210, 189, 0.7);
+  transition:
+    transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+    box-shadow 0.3s ease,
+    background-color 0.4s ease;
+  display: inline-block;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.cta-button:hover,
+.cta-button:focus {
+  background: #ee9b00;
+  color: #1a1a1a;
+  box-shadow: 0 10px 30px rgba(238, 155, 0, 0.8);
+  transform: translateZ(20px) scale(1.1);
+  outline: none;
+}
+
+/* About Us Section */
+.about {
+  padding: 60px 1rem 40px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about h2 {
+  font-weight: 900;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.07em;
+  color: #005f73;
+}
+
+.about p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  margin-top: 1.5rem;
+  transition: transform 0.35s ease;
+  cursor: pointer;
+}
+.about-image:hover,
+.about-image:focus {
+  transform: scale(1.03) rotateZ(1deg);
+  outline: none;
+}
+
+/* Goals Section */
+.goals {
+  background: #e0fbfc;
+  padding: 50px 20px;
+  max-width: 720px;
+  margin: 0 auto 50px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.goals h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #005f73;
+  margin-bottom: 1em;
+}
+
+.goals ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 16px;
+  padding-left: 0;
+}
+
+.goals ul li {
+  position: relative;
+  background: white;
+  padding: 16px 36px 16px 50px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  box-shadow: 0 6px 12px rgb(0 0 0 / 0.08);
+  user-select: none;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
+  perspective: 700px;
+  transform-style: preserve-3d;
+}
+.goals ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  color: #0a9396;
+  font-weight: bold;
+  text-shadow: 0 0 5px #94d2bdaa;
+}
+.goals ul li:hover {
+  box-shadow: 0 16px 26px rgb(0 0 0 / 0.15);
+  transform: translateZ(15px) rotateX(-5deg) scale(1.05);
+}
+
+/* Services Section */
+.services {
+  max-width: 960px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #0a9396;
+  margin-bottom: 1.5rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 30px;
+}
+
+.service-item {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  cursor: default;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+.service-item:hover {
+  transform: translateZ(20px) rotateY(8deg) rotateX(4deg) scale(1.05);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.18);
+}
+
+.service-item img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+  transition: filter 0.3s ease;
+}
+
+.service-item:hover img {
+  filter: drop-shadow(0 5px 8px rgba(14, 38, 42, 0.4));
+}
+
+.service-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8em;
+  color: #005f73;
+}
+
+.service-item p {
+  color: #444;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Testimonials */
+.testimonials {
+  background: #005f73;
+  color: #d9f0f2;
+  padding: 60px 20px;
+  max-width: 930px;
+  margin: 0 auto 60px;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  letter-spacing: 0.04em;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  position: relative;
+  user-select: none;
+}
+
+blockquote p {
+  margin-bottom: 0.7em;
+  line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+blockquote::before {
+  content: "“";
+  font-size: 4rem;
+  position: absolute;
+  left: -40px;
+  top: -10px;
+  color: #94d2bdcc;
+  font-weight: 900;
+  user-select: none;
+}
+
+.testimonials cite {
+  font-weight: 700;
+  font-style: normal;
+  color: #a7cbd6;
+}
+
+/* Blog Preview */
+.blog {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.blog h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #0a9396;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.blog article {
+  margin-bottom: 2.2rem;
+}
+
+.blog article h3 {
+  font-size: 1.3rem;
+  color: #005f73;
+  margin-bottom: 0.3rem;
+}
+
+.blog article p {
+  font-weight: 500;
+  color: #333;
+  line-height: 1.5;
+}
+
+.blog article a {
+  color: #ee9b00;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.blog article a:hover,
+.blog article a:focus {
+  text-decoration: underline;
+  color: #ca6702;
+  outline: none;
+}
+
+/* Contact Section */
+.contact {
+  max-width: 600px;
+  margin: 0 auto 80px;
+  padding: 0 15px;
+}
+
+.contact h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #005f73;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 1rem;
+}
+
+.contact label {
+  font-weight: 700;
+  color: #333;
+}
+
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid #94d2bd;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.contact input[type="text"]:focus,
+.contact input[type="email"]:focus,
+.contact textarea:focus {
+  border-color: #0a9396;
+  outline: none;
+}
+
+.contact textarea {
+  min-height: 120px;
+}
+
+.contact button[type="submit"] {
+  background: #0a9396;
+  color: white;
+  font-weight: 900;
+  font-size: 1.1rem;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,149,150,0.7);
+  transition: background-color 0.3s ease, transform 0.25s ease;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+.contact button[type="submit"]:hover,
+.contact button[type="submit"]:focus {
+  background: #94d2bd;
+  color: #003d3b;
+  transform: translateZ(12px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(148, 210, 189, 0.9);
+  outline: none;
+}
+
+/* Contact Info & Social Links */
+.contact-info {
+  margin-top: 30px;
+  font-size: 1rem;
+  text-align: center;
+  color: #222;
+  user-select: none;
+}
+
+.social-media {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-media a {
+  color: #0a9396;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.15rem;
+  transition: color 0.3s ease;
+}
+
+.social-media a:hover,
+.social-media a:focus {
+  color: #005f73;
+  outline: none;
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 24px 12px;
+  background: #94d2bd;
+  color: #003d3b;
+  font-weight: 600;
+  font-size: 1rem;
+  user-select: none;
+  letter-spacing: 0.06em;
+}
+
+/* Animations */
+@keyframes fadeInMoveUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+  }
+}
+
+@media (max-width: 650px){
+  header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+  .hero {
+    height: 320px;
+  }
+  .about-image {
+    max-width: 100%;
+  }
+  .service-item {
+    padding: 18px 20px;
+  }
+  .goals ul {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo" aria-label="Company logo">
+    <h1 tabindex="0">Accetion.</h1>
+  </div>
+  <nav role="navigation" aria-label="Main navigation">
+    <ul>
+      <li><a href="#home" tabindex="0">Home</a></li>
+      <li><a href="#about" tabindex="0">About Us</a></li>
+      <li><a href="#services" tabindex="0">Services</a></li>
+      <li><a href="#blog" tabindex="0">Blog</a></li>
+      <li><a href="#contact" tabindex="0">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="home" class="hero" role="region" aria-label="Hero section">
+  <div class="hero-content">
+    <h2 tabindex="0">Innovating for a Better Tomorrow</h2>
+    <p tabindex="0">Empowering businesses through AI-driven automation and digital transformation.</p>
+    <a href="#services" class="cta-button" tabindex="0">Get Started</a>
+  </div>
+</section>
+
+<section id="about" class="about" role="region" aria-label="About us section">
+  <h2 tabindex="0">About Us</h2>
+  <img 
+    src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+    alt="Team collaborating in a modern office space" 
+    class="about-image" 
+    tabindex="0"
+    />
+  <p tabindex="0">Our mission is to lead in sustainable and responsible AI technology, guided by our core values of integrity, innovation, and community impact.</p>
+</section>
+
+<section id="goals" class="goals" role="region" aria-label="Goals section">
+  <h2 tabindex="0">Our Goals</h2>
+  <ul>
+    <li tabindex="0">Launch and scale our AI-powered invoice automation platform by Q2 2024.</li>
+    <li tabindex="0">Achieve over 95% customer satisfaction by 2025 through continuous innovation and exceptional support.</li>
+    <li tabindex="0">Expand our digital solutions and positive impact to international markets by 2026.</li>
+  </ul>
+</section>
+
+<section id="services" class="services" role="region" aria-label="Services section">
+  <h2 tabindex="0">Our Services</h2>
+  <div class="services-grid">
+    <div class="service-item" tabindex="0" aria-label="Consulting service">
+      <img src="https://cdn-icons-png.flaticon.com/512/3208/3208212.png" alt="Consulting icon" />
+      <h3>Consulting</h3>
+      <p>Expert AI and automation advisory to help streamline your business operations and drive digital transformation.</p>
+    </div>
+    <div class="service-item" tabindex="0" aria-label="Product development service">
+      <img src="https://cdn-icons-png.flaticon.com/512/3580/3580231.png" alt="Product development icon" />
+      <h3>Product Development</h3>
+      <p>Cutting-edge AI-powered solutions designed to automate invoicing, reduce manual effort, and enhance business efficiency.</p>
+    </div>
+    <div class="service-item" tabindex="0" aria-label="Support service">
+      <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Support services icon" />
+      <h3>Support Services</h3>
+      <p>Dedicated customer support to ensure seamless integration, ongoing success, and continuous improvement of your digital solutions.</p>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials" role="region" aria-label="Testimonials section">
+  <h2 tabindex="0">What Our Clients Say</h2>
+  <blockquote tabindex="0">
+    <p>"Their innovative approach to automation helped us reduce errors and boost productivity like never before.""</p>
+    <cite>- Rajesh Kumar, Founder of LogiTech Pvt Ltd</cite>
+  </blockquote>
+  <blockquote tabindex="0">
+    <p>"Accetion’s AI solutions drastically improved our invoicing process and saved us countless hours.""</p>
+    <cite>- Jane Patel, CFO of Ecom Solutions</cite>
+  </blockquote>
+</section>
+
+<section id="blog" class="blog" role="region" aria-label="Blog preview section">
+  <h2 tabindex="0">Latest Blog Posts</h2>
+  <article tabindex="0">
+    <h3>Post Title 1</h3>
+    <p>Short description of the blog post. <a href="#" tabindex="0">Read More</a></p>
+  </article>
+  <article tabindex="0">
+    <h3>Post Title 2</h3>
+    <p>Short description of the blog post. <a href="#" tabindex="0">Read More</a></p>
+  </article>
+</section>
+
+<section id="contact" class="contact" role="region" aria-label="Contact us section">
+  <h2 tabindex="0">Contact Us</h2>
+  <form action="submit_form.php" method="post" aria-label="Contact form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required aria-required="true" />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required aria-required="true" />
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required aria-required="true"></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+  <div class="contact-info" aria-label="Company contact information">
+    <p>Email: info@accetion.com</p>
+    <p>Phone: (123) 456-7890</p>
+    <div class="social-media" aria-label="Social media links">
+      <a href="#" tabindex="0">Facebook</a>
+      <a href="#" tabindex="0">Twitter</a>
+      <a href="#" tabindex="0">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <p>&copy; 2023 Startup Company. All rights reserved.</p>
+</footer>
+
+<script>
+  // Basic script to add subtle 3D tilt effect to hero text based on mouse movement
+  const heroContent = document.querySelector('.hero-content');
+  const hero = document.querySelector('.hero');
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left; // x position within hero
+    const y = e.clientY - rect.top; // y position within hero
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * 8; // tilt degree max 8
+    const rotateY = ((x - centerX) / centerX) * 8;
+
+    heroContent.style.transform = \perspective(600px) rotateX(\${-rotateX}deg) rotateY(\${rotateY}deg) translateZ(40px)\;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    heroContent.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(40px)';
+  });
+</script>
+</body>
+</html>
